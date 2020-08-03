@@ -1,9 +1,6 @@
 const fs = require('fs');
 const chalk = require('chalk');
-
-const getNotes = ()=>{
-    return 'This is my notes';
-}
+const { time } = require('console');
 
 
 //Add Notes
@@ -75,13 +72,28 @@ const listAllnotes = ()=>{
     {
         console.log(chalk.blue('Your notes are :'));
         notes.forEach(note => {
-            console.log(chalk.green(note.title) +':'+chalk.cyan(note.body));    
+            console.log(chalk.green(note.title));    
         });
         
     }
 }
 
 
+//readNotes
+const readNotes =(title) =>{
+    const notes = loadNotes();
+
+    const filterNote = notes.find((note)=>note.title===title);
+
+    if(filterNote)
+    {
+        console.log(chalk.green.bold(filterNote.title)+' : '+chalk.blue(filterNote.body));
+    }
+    else
+    {
+        console.log(chalk.red('Note not Found'));
+    }
+}
 
 //Save Notes
 const saveNotes = (notes)=>{
@@ -107,8 +119,8 @@ const loadNotes = ()=>{
 }
 
 module.exports={
-    getNote : getNotes,
     addNote : addNote,
     removeNote : removeNote,
-    listAllnotes : listAllnotes
+    listAllnotes : listAllnotes,
+    readNotes : readNotes
 };

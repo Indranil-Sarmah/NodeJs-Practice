@@ -1,1 +1,18 @@
-[]
+[
+    {
+        "title": "watch",
+        "body": "watch TV"
+    },
+    {
+        "title": "exercise",
+        "body": "Go swimming at 6:30"
+    },
+    {
+        "title": "study",
+        "body": "syudy economics"
+    },
+    {
+        "title": "call",
+        "body": "Discussion about presentation on vedio call"
+    }
+]

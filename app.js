@@ -1,6 +1,7 @@
 const chalk = require('chalk');
 const yargs = require('yargs')
 const notes = require('./notes.js');
+const { string } = require('yargs');
 
 //console.log(process.argv);
 //console.log(yargs.argv);
@@ -52,8 +53,16 @@ yargs.command({
 yargs.command({
     command:'read',
     describe:'Read a new note',
-    handler(){
-        console.log(chalk.bgYellow.bold.red('Reading a new note'));
+    builder:{
+        title:{
+            describe:'Note title',
+            demandOption : true,
+            type:'string'
+
+        }
+    },
+    handler(argv){
+        notes.readNotes(argv.title)
     }
 })
 
